@@ -16,3 +16,8 @@
     #      ...  
     # ]  
 ```
+
+使用命令安装`pypinyin`
+```
+pip install -r requirements.txt
+```
