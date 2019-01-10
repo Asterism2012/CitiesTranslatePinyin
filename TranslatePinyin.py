@@ -57,8 +57,7 @@ def TranslateJson():
     Json转换
     :return: JsonStr 将所有的对应的 地区、外键、首字母进行映射
     '''
-
-    forgKeyMappingDic = {chr(i): index + 1 for index, i in enumerate(range(ord("A"), ord("Z") + 1))}        # 生成外键映射, a-z对应数字1-26
+    forgKeyMappingDic = {chr(i): index + 1 for index, i in enumerate(range(ord("A"), ord("Z") + 1))}     # 生成外键映射, a-z对应数字1-26
     new_city_list = TranslateList()     # 城市列表
     end_all_citys_json = []     # 最终的Json
     end_pinyin_list = list(map(TranslatePinyin, new_city_list))     # 拼音列表
@@ -77,8 +76,9 @@ def TranslateJson():
             _itemLis.append('暂无城市信息')
         _itemDic[i] = {'city': _itemLis, 'forgkey': j}
         end_all_citys_json.append(_itemDic)     # 将临时字典追加到Json列表中
-    return json.dumps(end_all_citys_json)
+    return json.dumps(end_all_citys_json, ensure_ascii=False)
+
 TranslateJson()
 
 # 预览Json
-# print(TranslateJson())
+print(TranslateJson())
